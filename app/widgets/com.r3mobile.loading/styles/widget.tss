@@ -1,0 +1,20 @@
+'#container': {
+	  layout:'vertical',
+	  height:Ti.UI.SIZE
+},
+
+'#backdrop': {
+	  opacity:0.75
+},
+
+'#message': {
+  	top : '3dp',
+	  textAlign:'center',
+	  height:Ti.UI.SIZE,
+	  width:Ti.UI.SIZE,
+	  font: {
+		    fontSize:'12dp',
+		    fontWeight:'bold',
+		    fontFamily:'Quicksand-Bold'
+	  }
+}

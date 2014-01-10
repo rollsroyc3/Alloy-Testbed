@@ -1,0 +1,9 @@
+<Alloy>
+	<View id="main">
+		<View id="backdrop"/>
+		<View id="container">
+			<ImageView id="loader"/>
+			<Label id="message">Loading</Label>
+		</View>
+	</View>
+</Alloy>

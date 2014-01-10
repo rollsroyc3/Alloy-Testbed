@@ -1,0 +1,11 @@
+<Alloy>
+	<Window>
+		 <Require type="widget" src="com.r3mobile.counter" id="counter"/>
+		 <!-- <Require type="widget" src="tiflexigrid" id="fg"/> -->
+		<!-- <Require type="widget" src="com.r3mobile.maskTextbox" mask="phone" hintText="testing" id="txtMask"/> -->
+		<!-- <Require type="widget" src="iconicLabel" icon="icon-save" id="uniformapparelIcon" class="icon"/> -->
+		<!-- <Require id="loading" type="widget" src="com.r3mobile.loading"></Require> -->
+		<!-- <Require type="widget" src="com.appcelerator.drawer" id="drawer" /> -->
+		<!-- <Require type="widget" src="com.appcelerator.bouncylogo" id="logo" /> -->
+	</Window>
+</Alloy>
