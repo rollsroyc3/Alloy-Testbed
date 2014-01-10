@@ -6,10 +6,11 @@ function WPATH(s) {
 
 function Controller() {
     function animate() {
-        if (0 == counter) {
+        if (0 == count) {
             clearTimeout(timeoutID);
             lblCounter.text = "";
             $.placeHolder.remove(lblCounter);
+            $.complete();
         } else switch (animation) {
           case exports.animations.ZOOMIN:
             scale = args.scale || 6;
@@ -23,9 +24,9 @@ function Controller() {
             lblCounter.animate(a, function() {
                 $.placeHolder.remove(lblCounter);
                 lblCounter = null;
-                counter--;
+                count--;
                 lblCounter = getLabel();
-                lblCounter.text = counter.toString();
+                lblCounter.text = count.toString();
                 lblCounter.opacity = 1;
                 $.placeHolder.add(lblCounter);
                 timeoutID = setTimeout(function() {
@@ -46,9 +47,9 @@ function Controller() {
             lblCounter.animate(a, function() {
                 $.placeHolder.remove(lblCounter);
                 lblCounter = null;
-                counter--;
+                count--;
                 lblCounter = getLabel();
-                lblCounter.text = counter.toString();
+                lblCounter.text = count.toString();
                 lblCounter.opacity = 1;
                 $.placeHolder.add(lblCounter);
                 timeoutID = setTimeout(function() {
@@ -77,9 +78,9 @@ function Controller() {
                         lblCounter.animate(c, function() {
                             $.placeHolder.remove(lblCounter);
                             lblCounter = null;
-                            counter--;
+                            count--;
                             lblCounter = getLabel();
-                            lblCounter.text = counter.toString();
+                            lblCounter.text = count.toString();
                             lblCounter.opacity = 1;
                             $.placeHolder.add(lblCounter);
                             timeoutID = setTimeout(function() {
@@ -111,9 +112,9 @@ function Controller() {
                         lblCounter.animate(c, function() {
                             $.placeHolder.remove(lblCounter);
                             lblCounter = null;
-                            counter--;
+                            count--;
                             lblCounter = getLabel();
-                            lblCounter.text = counter.toString();
+                            lblCounter.text = count.toString();
                             lblCounter.opacity = 1;
                             $.placeHolder.add(lblCounter);
                             timeoutID = setTimeout(function() {
@@ -130,7 +131,7 @@ function Controller() {
         switch (animation) {
           case exports.animations.ZOOMIN:
             lbl = Ti.UI.createLabel({
-                text: counter.toString(),
+                text: count.toString(),
                 font: {
                     fontFamily: fontFamily,
                     fontSize: fontSize
@@ -140,7 +141,7 @@ function Controller() {
 
           case exports.animations.ZOOMOUT:
             lbl = Ti.UI.createLabel({
-                text: counter.toString(),
+                text: count.toString(),
                 font: {
                     fontFamily: fontFamily,
                     fontSize: fontSize
@@ -151,7 +152,7 @@ function Controller() {
           case exports.animations.DROPDOWN:
             lbl = Ti.UI.createLabel({
                 top: -200,
-                text: counter.toString(),
+                text: count.toString(),
                 font: {
                     fontFamily: fontFamily,
                     fontSize: fontSize
@@ -162,7 +163,7 @@ function Controller() {
           case exports.animations.SLIDEUP:
             lbl = Ti.UI.createLabel({
                 bottom: -200,
-                text: counter.toString(),
+                text: count.toString(),
                 font: {
                     fontFamily: fontFamily,
                     fontSize: fontSize
@@ -195,7 +196,7 @@ function Controller() {
     };
     var fontFamily = args.fontFamily || "Tequilla Sunrise";
     var fontSize = args.fontSize || "60dp";
-    var counter = args.counter || 10;
+    var count = args.count || 10;
     var animation = args.animation || exports.animations.ZOOMOUT;
     var scale = void 0;
     var interval = args.interval || 0;
@@ -203,7 +204,9 @@ function Controller() {
     var timeoutID = 0;
     var lblCounter = getLabel();
     $.placeHolder.add(lblCounter);
-    animate();
+    $.start = function() {
+        animate();
+    };
     _.extend($, exports);
 }
 

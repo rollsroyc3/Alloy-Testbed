@@ -1,20 +1,14 @@
 "Window": {
-	backgroundColor:"white"
-},
-"Label": {
-	width: Ti.UI.SIZE,
-	height: Ti.UI.SIZE,
-	color: "#000"
+	  backgroundColor:"white"
+}
+
+"Button": {
+	  top : '10dp',
+	  width: Ti.UI.SIZE,
+	  height: Ti.UI.SIZE,
+	  color: "#000"
 } 
-// ".icon": {
-  // font: {
-    // fontSize: '25sp'
-  // },
-  // color: '#8fa6bc'
-// }
-// ".iconicLabel": {
-  // font: {
-    // fontSize: '25sp'
-  // },
-  // color: 'red'
-// }
+
+"#buttonOptions" : {
+		  layout : 'vertical'
+}

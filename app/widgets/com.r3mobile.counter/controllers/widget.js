@@ -9,7 +9,7 @@ exports.animations = {
 
 var fontFamily = args.fontFamily || 'Tequilla Sunrise';
 var fontSize = args.fontSize || '60dp';
-var counter = args.counter || 10;
+var count = args.count || 10;
 var animation = args.animation || exports.animations.ZOOMOUT;
 var scale = undefined;
 var interval = args.interval || 0;
@@ -18,10 +18,11 @@ var timeoutID = 0;
 var lblCounter = getLabel();
 
 function animate() {
-	if (counter == 0) {
+	if (count == 0) {
 		clearTimeout(timeoutID);
 		lblCounter.text = '';
 		$.placeHolder.remove(lblCounter);
+		$.complete();
 	} else {
 		switch(animation) {
 			case exports.animations.ZOOMIN:
@@ -42,10 +43,10 @@ function animate() {
 					$.placeHolder.remove(lblCounter);
 					lblCounter = null;
 
-					counter--;
+					count--;
 
 					lblCounter = getLabel();
-					lblCounter.text = counter.toString();
+					lblCounter.text = count.toString();
 					lblCounter.opacity = 1;
 					$.placeHolder.add(lblCounter);
 
@@ -72,10 +73,10 @@ function animate() {
 					$.placeHolder.remove(lblCounter);
 					lblCounter = null;
 
-					counter--;
+					count--;
 
 					lblCounter = getLabel();
-					lblCounter.text = counter.toString();
+					lblCounter.text = count.toString();
 					lblCounter.opacity = 1;
 					$.placeHolder.add(lblCounter);
 
@@ -111,10 +112,10 @@ function animate() {
 								$.placeHolder.remove(lblCounter);
 								lblCounter = null;
 
-								counter--;
+								count--;
 
 								lblCounter = getLabel();
-								lblCounter.text = counter.toString();
+								lblCounter.text = count.toString();
 								lblCounter.opacity = 1;
 								$.placeHolder.add(lblCounter);
 
@@ -153,10 +154,10 @@ function animate() {
 								$.placeHolder.remove(lblCounter);
 								lblCounter = null;
 
-								counter--;
+								count--;
 
 								lblCounter = getLabel();
-								lblCounter.text = counter.toString();
+								lblCounter.text = count.toString();
 								lblCounter.opacity = 1;
 								$.placeHolder.add(lblCounter);
 
@@ -177,7 +178,7 @@ function getLabel() {
 	switch(animation) {
 		case exports.animations.ZOOMIN:
 			lbl = Ti.UI.createLabel({
-				text : counter.toString(),
+				text : count.toString(),
 				font : {
 					fontFamily : fontFamily,
 					fontSize : fontSize
@@ -186,7 +187,7 @@ function getLabel() {
 			break;
 		case exports.animations.ZOOMOUT:
 			lbl = Ti.UI.createLabel({
-				text : counter.toString(),
+				text : count.toString(),
 				font : {
 					fontFamily : fontFamily,
 					fontSize : fontSize
@@ -197,7 +198,7 @@ function getLabel() {
 			lbl = Ti.UI.createLabel({
 				top : -200,
 				//bottom : Ti.Platform.displayCaps.platformHeight,
-				text : counter.toString(),
+				text : count.toString(),
 				font : {
 					fontFamily : fontFamily,
 					fontSize : fontSize
@@ -208,7 +209,7 @@ function getLabel() {
 			lbl = Ti.UI.createLabel({
 				bottom : -200,
 				//bottom : Ti.Platform.displayCaps.platformHeight,
-				text : counter.toString(),
+				text : count.toString(),
 				font : {
 					fontFamily : fontFamily,
 					fontSize : fontSize
@@ -221,4 +222,7 @@ function getLabel() {
 
 $.placeHolder.add(lblCounter);
 
-animate();
+$.start = function() {
+	animate();
+};
+
